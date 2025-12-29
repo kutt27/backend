@@ -15,6 +15,16 @@ const app = require('./app');
 // or defaults to 3000. This allows flexibility in deployment, as different environments may require different ports.
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}`)
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port: ${PORT}`)
+// });
+
+// Connect to MongoDB
+const mongoDB = require('./config/database');
+
+connectDB().then( () => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port: ${PORT}`);
+    })
+})
+
